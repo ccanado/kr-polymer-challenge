@@ -10,32 +10,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>Elements Test Runner</title>
-  <meta charset="UTF-8">
+  <title>krypton-control</title>
 
-  <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../bower_components/web-component-tester/browser.js"></script>
-</head>
 
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../elements/krypton-control/krypton-control.html">
+
+</head>
 <body>
 
-  <script>
-    WCT.loadSuites([
-      'krypton-data-basic.html',
-      'krypton-data-basic.html?dom=shadow',
-      'krypton-control-basic.html',
-      'krypton-control-basic.html?dom=shadow',
-      'krypton-swipeable-pages-basic.html',
-      'krypton-swipeable-pages-basic.html?dom=shadow',
-      'krypton-page-basic.html',
-      'krypton-page-basic.html?dom=shadow'
-    ]);
-  </script>
+<test-fixture id="basic">
+  <template>
+    <krypton-control></krypton-control>
+  </template>
+</test-fixture>
 
+<script>
+  suite('krypton-control tests', function() {
+    var element;
+
+    setup(function() {
+      element = fixture('basic');
+    });
+
+    test('', function() {
+
+    });
+
+  });
+</script>
 
 </body>
-
 </html>

@@ -1,12 +1,20 @@
 {
-  "name": "polymer-starter-kit",
+  "name": "kr-polymer-challenge",
+  "version": "0.0.1",
+  "authors": [
+    "Carlos Canado <ccanado@gmail.com>"
+  ],
+  "description": "Cells Polymer Challenge Accepted",
+  "keywords": [
+    "polymer",
+    "reusable",
+    "elegant",
+    "swipe",
+    "components"
+  ],
   "private": true,
   "dependencies": {
-    "iron-elements": "PolymerElements/iron-elements#^1.0.0",
-    "neon-elements": "PolymerElements/neon-elements#^1.0.0",
     "page": "visionmedia/page.js#~1.6.4",
-    "paper-elements": "PolymerElements/paper-elements#^1.0.1",
-    "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "polymer": "Polymer/polymer#^1.2.0"
   },
   "devDependencies": {
