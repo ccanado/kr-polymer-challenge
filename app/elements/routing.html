@@ -15,17 +15,7 @@ This file is part of CellsChallenge project.
       page.base(app.baseUrl.replace(/\/$/, ''));
     }
 
-    // Middleware
-    function scrollToTop(ctx, next) {
-      app.scrollPageToTop();
-      next();
-    }
-
     // Routes
-    page('*', scrollToTop, function(ctx, next) {
-      next();
-    });
-
     page('/', function() {
       app.route = 'home';
     });
