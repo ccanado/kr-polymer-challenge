@@ -2,7 +2,7 @@
   'use strict';
 
   var app = document.querySelector('#app');
-  app.route = 'home';
+  app.route = 'Organic Green Lemonade';
 
   // Sets app default base URL
   app.baseUrl = '/';
