@@ -1,0 +1,43 @@
+<!--
+Copyright (c) 2016 CCANADO
+This file is part of CellsChallenge project.
+
+@group Krypton Elements
+@author Carlos Canado (ccanado@gmail.com)
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-swipeable-pages/iron-swipeable-pages.html">
+<link rel="import" href="../krypton-page/krypton-page.html">
+
+<dom-module id="krypton-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <iron-swipeable-pages attr-for-selected="data-route" selected="[[selected]]" threshold="0.1">
+      <template is="dom-repeat" items="[[records]]" as="record">
+        <krypton-page data-route="[[record.slug]]" data="[[record]]">
+        </krypton-page>
+      </template>
+    </iron-swipeable-pages>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'krypton-view',
+
+      properties: {
+        selected: String,
+        records: Array
+      }
+    });
+  })();
+  </script>
+</dom-module>

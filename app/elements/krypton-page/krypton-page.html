@@ -10,10 +10,17 @@ This file is part of CellsChallenge project.
 
 <dom-module id="krypton-page">
   <template>
-     <style>
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     </style>
 
-    <div>Hello from <span>{{data.name}}</span></div>
+    <h1>{{data.name}}</h1>
+    <p>{{data.description}}</p>
+    <p>{{data.text}}</p>
     <img src="/images/data/{{data.image}}" />
   </template>
   <script>

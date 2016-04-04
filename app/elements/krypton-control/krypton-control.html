@@ -11,13 +11,16 @@ This file is part of CellsChallenge project.
 <dom-module id="krypton-control">
   <template>
     <style>
+      :host {
+        display: block;
+      }
       .active {
         color: red;
       }
     </style>
 
     <template is="dom-repeat" items="{{records}}" as="item">
-      <p class$="{{_checkActive(item.name, selected)}}">{{item.name}}</p>
+      <p class$="{{_checkActive(item.slug, selected)}}">{{item.name}}</p>
     </template>
 
   </template>
@@ -33,8 +36,8 @@ This file is part of CellsChallenge project.
         records: Array
       },
 
-      _checkActive(name, selected) {
-        return (name === selected)? 'active': '';
+      _checkActive(slug, selected) {
+        return (slug === selected)? 'active': '';
       }
     });
   })();

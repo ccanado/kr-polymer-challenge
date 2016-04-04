@@ -61,17 +61,11 @@ This file is part of CellsChallenge project.
   <template is="dom-bind" id="app">
     <krypton-data records="{{records}}"></krypton-data>
 
-    <krypton-control records="{{records}}" selected="{{route}}">
+    <krypton-control records="[[records]]" selected="{{route}}">
     </krypton-control>
 
-    <krypton-swipeable-pages selected="0">
-
-      <template is="dom-repeat" items="[[records]]" as="record">
-        <krypton-page data-route="[[record.name]]" data="[[record]]">
-        </krypton-page>
-      </template>
-
-    </krypton-swipeable-pages>
+    <krypton-view records="[[records]]" selected="{{route}}">
+    </krypton-view>
   </template>
 
   <!-- build:js scripts/app.js -->

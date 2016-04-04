@@ -9,7 +9,6 @@ This file is part of CellsChallenge project.
 <script src="../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('WebComponentsReady', function() {
-
     // Removes end / from app.baseUrl which page.base requires for production
     if (window.location.port === '') {  // if production
       page.base(app.baseUrl.replace(/\/$/, ''));
@@ -25,8 +24,8 @@ This file is part of CellsChallenge project.
     });
 
     // 404
-    page('*', function() {
-      page.redirect(app.baseUrl);
+    page('*', function(context) {
+      app.route = context.path.substr(1);
     });
 
     // add #! before urls
