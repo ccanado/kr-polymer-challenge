@@ -32,7 +32,10 @@ This file is part of CellsChallenge project.
       is: 'krypton-control',
 
       properties: {
-        selected: String,
+        selected: {
+          type: String,
+          notify: true
+        },
         records: Array
       },
 

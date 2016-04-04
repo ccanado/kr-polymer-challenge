@@ -18,7 +18,7 @@ This file is part of CellsChallenge project.
       }
     </style>
 
-    <iron-swipeable-pages attr-for-selected="data-route" selected="[[selected]]" threshold="0.1">
+    <iron-swipeable-pages attr-for-selected="data-route" selected="{{selected}}" threshold="0.1">
       <template is="dom-repeat" items="[[records]]" as="record">
         <krypton-page data-route="[[record.slug]]" data="[[record]]">
         </krypton-page>
@@ -34,7 +34,10 @@ This file is part of CellsChallenge project.
       is: 'krypton-view',
 
       properties: {
-        selected: String,
+        selected: {
+          type: String,
+          notify: true
+        },
         records: Array
       }
     });

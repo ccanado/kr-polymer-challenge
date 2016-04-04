@@ -21,9 +21,14 @@
   window.addEventListener('WebComponentsReady', function () {
     // imports are loaded and elements have been registered
 
-    const dataObj = document.querySelector('krypton-data');
-    dataObj.addEventListener('connected', function (e) {
-      page.redirect('/' + e.detail.first);
-    });
+    document.querySelector('krypton-data').addEventListener(
+      'connected', function (e) {
+        page.redirect('/' + e.detail.first);
+      });
+
+    document.querySelector('krypton-control').addEventListener(
+      'selected-changed', function () {
+        page.redirect('/' + app.route);
+      });
   });
 })(document);
