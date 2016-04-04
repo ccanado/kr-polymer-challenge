@@ -1,9 +1,10 @@
-(function(document) {
+(function (document) {
   'use strict';
 
-  var app = document.querySelector('#app');
-  app.route = '';
+  const app = document.querySelector('#app');
+  app.firebaseURL = 'https://kr-polymer-challenge.firebaseio.com';
   app.baseUrl = '/';
+  app.route = '';
 
   if (window.location.port === '') {  // if production
     // Uncomment app.baseURL below and
@@ -19,5 +20,10 @@
 
   window.addEventListener('WebComponentsReady', function () {
     // imports are loaded and elements have been registered
+
+    const dataObj = document.querySelector('krypton-data');
+    dataObj.addEventListener('connected', function (e) {
+      page.redirect('/' + e.detail.first);
+    });
   });
 })(document);

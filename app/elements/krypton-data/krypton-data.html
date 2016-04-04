@@ -7,11 +7,18 @@ This file is part of CellsChallenge project.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 
 <dom-module id="krypton-data">
   <template>
     <style>
     </style>
+
+    <firebase-collection location="{{location}}"
+                         data="{{records}}"
+                         on-firebase-value="_firebaseLoaded">
+    </firebase-collection>
+
   </template>
 
   <script>
@@ -22,29 +29,29 @@ This file is part of CellsChallenge project.
       is: 'krypton-data',
 
       properties: {
+        location: String,
         records: {
-          notify: true,
-          value: function() {
-            return [
-              {
-                name: 'Organic Green Lemonade',
-                slug: 'organic-green-lemonade',
-                description: 'This refreshing twist on lemonade has a smooth finish & SOME of our favorite leafy greens.',
-                text: 'Ingredients: Filtered water, organic celery juice, organic lemon juice, organic agave syrup, organic cucumber juice, organic spinach juice, organic romaine lettuce juice, organic kale juice, organic parsley juice.',
-                back: 'lemon.jpg',
-                image: 'OrganicGreenLemonade.png'
-              },
-              {
-                name: 'Organic Greens & Kale',
-                slug: 'organic-greens-kale',
-                description: 'Kale is king in this refreshing blend of lush organic greens, brightened by cucumber & a squeeze of lemon. Potassium & Vitamin K enliven every sip.',
-                text: 'Ingredients: Organic juices (celery, cucumber, spinach, romaine lettuce, kale, lemon, parsley).',
-                back: 'greens_lnSauyI.jpg',
-                image: 'OrganicGreensKale.png'
-              }
-            ];
-          }
+          type: Array,
+          notify: true
+        },
+        _firebaseConnected: {
+          type: Boolean,
+          value: false
         }
+      },
+
+      _firebaseLoaded: function() {
+        this._firebaseConnected = true;
+
+        // When it is connected fires an event sending the first slug
+        this.fire('connected', {
+          first: this.getFirstSlug()
+        });
+      },
+
+      getFirstSlug: function() {
+        return this._firebaseConnected && this.records.length > 0 ?
+          this.records[0].slug: '';
       }
     });
   })();
