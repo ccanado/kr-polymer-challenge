@@ -7,21 +7,146 @@ This file is part of CellsChallenge project.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet" type="text/css">
 
 <dom-module id="krypton-control">
   <template>
     <style>
       :host {
         display: block;
+        font-size: 1.5rem;
+        font-family: 'Amatic SC', cursive !important;
+        background: rgba(96, 174, 65, .8);
       }
+      h1 {
+        font-size: 2em;
+        line-height: 1em;
+        color: #fff;
+        text-align: center;
+        border-bottom: 1px dashed white;
+        padding: 20px;
+        margin: 0 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 20px 0;
+      }
+      li {
+        padding: 10px 30px;
+      }
+
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 20px;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        -webkit-transition: 0.3s ease-out;
+        -moz-transition: 0.3s ease-out;
+        transition: 0.3s ease-out;
+      }
+      a span::before {
+        width: 5px;
+        height: 5px;
+        background: transparent;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-top: 2px solid #c3ffab;
+        border-left: 2px solid #c3ffab;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        opacity: 0;
+      }
+      a span::after {
+        width: 5px;
+        height: 5px;
+        background: transparent;
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-right: 2px solid #c3ffab;
+        border-bottom: 2px solid #c3ffab;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        opacity: 0;
+      }
+      a::before {
+        width: 5px;
+        height: 5px;
+        background: transparent;
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-right: 2px solid #c3ffab;
+        border-top: 2px solid #c3ffab;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        opacity: 0;
+      }
+      a::after {
+        width: 5px;
+        height: 5px;
+        background: transparent;
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border-left: 2px solid #c3ffab;
+        border-bottom: 2px solid #c3ffab;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        opacity: 0;
+      }
+      li:not(.active) a:hover {
+        font-weight: bolder;
+        color: #c3ffab;
+      }
+      li:not(.active) a:hover::before {
+        opacity: 1;
+        right: 5px;
+        top: 5px;
+      }
+      li:not(.active) a:hover::after {
+        opacity: 1;
+        left: 5px;
+        bottom: 5px;
+      }
+      li:not(.active) a:hover span::before {
+        opacity: 1;
+        left: 5px;
+        top: 5px;
+      }
+      li:not(.active) a:hover span::after {
+        opacity: 1;
+        right: 5px;
+        bottom: 5px;
+      }
+
       .active {
-        color: red;
+        background-color: #237c00;
       }
     </style>
 
-    <template is="dom-repeat" items="{{records}}" as="item">
-      <p class$="{{_checkActive(item.slug, selected)}}">{{item.name}}</p>
-    </template>
+    <h1>Polymer Cells<br/>Challenge</h1>
+    <ul>
+      <template is="dom-repeat" items="{{records}}" as="item">
+        <li class$="{{_checkActive(item.slug, selected)}}">
+          <a href$="{{_link(item.slug)}}">
+            <span>{{item.name}}</span>
+          </a>
+        </li>
+      </template>
+    </ul>
 
   </template>
   <script>
@@ -37,6 +162,10 @@ This file is part of CellsChallenge project.
           notify: true
         },
         records: Array
+      },
+
+      _link(slug) {
+        return '/' + slug;
       },
 
       _checkActive(slug, selected) {
