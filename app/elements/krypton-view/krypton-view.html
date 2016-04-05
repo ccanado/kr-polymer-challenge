@@ -16,6 +16,7 @@ This file is part of CellsChallenge project.
     <style>
       :host {
         display: block;
+        position: relative;
         @apply(--layout-fullbleed);
         @apply(--layout-vertical);
       }
@@ -25,14 +26,37 @@ This file is part of CellsChallenge project.
       krypton-page {
         cursor: -webkit-grab; cursor: -moz-grab;
       }
+      .btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      #lt-arrow {
+        background: url('/images/lt-slider-arrow.png') no-repeat left center;
+        left: 0;
+      }
+      #rt-arrow {
+        background: url('/images/rt-slider-arrow.png') no-repeat right center;
+        right: 0;
+      }
     </style>
 
-    <iron-swipeable-pages attr-for-selected="data-route" selected="{{selected}}" threshold="0.1">
+    <iron-swipeable-pages id="swipeable" threshold="0.1"
+                          attr-for-selected="data-route"
+                          selected="{{selected}}">
       <template is="dom-repeat" items="[[records]]" as="record">
         <krypton-page data-route="[[record.slug]]" data="[[record]]">
         </krypton-page>
       </template>
     </iron-swipeable-pages>
+
+    <span id="lt-arrow" class="btn"></span>
+    <span id="rt-arrow" class="btn"></span>
 
   </template>
   <script>
@@ -48,6 +72,19 @@ This file is part of CellsChallenge project.
           notify: true
         },
         records: Array
+      },
+
+      listeners: {
+        'lt-arrow.tap': '_swipeLeft',
+        'rt-arrow.tap': '_swipeRight',
+      },
+
+      _swipeLeft: function() {
+        this.$.swipeable.selectPrevious();
+      },
+
+      _swipeRight: function() {
+        this.$.swipeable.selectNext();
       }
     });
   })();
