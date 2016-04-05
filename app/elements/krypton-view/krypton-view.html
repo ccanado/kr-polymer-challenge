@@ -7,6 +7,7 @@ This file is part of CellsChallenge project.
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-swipeable-pages/iron-swipeable-pages.html">
 <link rel="import" href="../krypton-page/krypton-page.html">
 
@@ -15,6 +16,14 @@ This file is part of CellsChallenge project.
     <style>
       :host {
         display: block;
+        @apply(--layout-fullbleed);
+        @apply(--layout-vertical);
+      }
+      iron-swipeable-pages {
+       @apply(--layout-flex);
+      }
+      krypton-page {
+        cursor: -webkit-grab; cursor: -moz-grab;
       }
     </style>
 
