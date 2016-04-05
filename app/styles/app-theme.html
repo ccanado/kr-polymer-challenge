@@ -69,6 +69,21 @@
 
   /* Small */
   @media (max-width: 600px) {
+    body {
+        @apply(--layout-vertical);
+    }
+
+    krypton-control .social {
+      position: absolute;
+      left: auto;
+      bottom: auto;
+      right: 10px;
+      top: 10px;
+    }
+
+    krypton-control .social span {
+      display: none;
+    }
   }
 
   /* Tablet+ */

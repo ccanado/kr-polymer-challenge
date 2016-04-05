@@ -34,6 +34,9 @@ This file is part of CellsChallenge project.
       li {
         padding: 5px 30px;
       }
+      ul > li > a > img {
+        display: none;
+      }
 
       a {
         text-decoration: none;
@@ -134,6 +137,35 @@ This file is part of CellsChallenge project.
       .active {
         background-color: #237c00;
       }
+
+      /* Small */
+      @media (max-width: 600px) {
+        :host {
+          text-align: center;
+        }
+        h1 {
+          font-size: 1.5em;
+        }
+        ul {
+          display: inline-block;
+          padding: 0;
+          margin: 5px auto;
+        }
+        li {
+          display: inline-block;
+          padding: 5px;
+        }
+        a {
+          padding: 5px;
+        }
+        ul > li > a > img {
+          display: block;
+          height: 48px;
+        }
+        ul > li > a > span {
+          display: none;
+        }
+      }
     </style>
 
     <h1>Polymer Cells<br/>Challenge</h1>
@@ -141,6 +173,7 @@ This file is part of CellsChallenge project.
       <template is="dom-repeat" items="{{records}}" as="item">
         <li class$="{{_checkActive(item.slug, selected)}}">
           <a href$="{{_link(item.slug)}}">
+            <img src="/images/data/{{item.image}}"/>
             <span>{{item.name}}</span>
           </a>
         </li>
